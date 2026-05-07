@@ -22,7 +22,7 @@
             }
 
             #label_pw {
-
+                color: blue;
             }
         </style>
     </head>

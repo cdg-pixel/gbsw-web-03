@@ -1,10 +1,9 @@
-function solution(number, n, m) {
+function solution(num_list) {
     let answer = 0;
-    if (number % n == 0 && number % m == 0) {
-        answer = 1
+    let num = 1;
+    
+    for (let answer = 0; answer < num_list; answer++) {
+        console.log(num_list[answer]);
     }
     return answer;
 }
-
-console.log(solution(12, 3, 4));
-console.log(solution(13, 3, 4));
