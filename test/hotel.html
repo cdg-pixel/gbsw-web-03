@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>호텔 체크인 관리</title>
+        <style>
+            @font-face {
+    font-family: 'ElegantSerif';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.0/GraceSerif-Regular.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ElegantSerif';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2604-1@1.0/GraceSerif-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IAmAPlayer';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/IAMAPLAYER.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+            body {
+                font-family: "ElegantSerif", "IAmPlayer";
+                background-color: black;
+                color: white;
+            }
+
+            h1 {
+                color: white;
+            }
+
+            p {
+                font-size: 18px;
+            }
+
+            .wrap {
+                background-color: rgba(255, 255, 255, 0.2);
+                border-radius: 10px;
+                padding: 20px;
+                /* 상, 좌우, 하 */
+                margin: 20px auto 0;
+                /* 상하, 좌우 */
+                /* margin: 0 auto; */
+                width: 50%;
+            }
+
+            img {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+            .checkin_wrap {
+                background-color: greenyellow;
+                padding: 15px;
+                margin: 15px 0;
+                border-radius: 10px;
+            }
+
+            .checkin_wrap h2 {
+                margin-top: 5px;
+            }
+
+            .room_wrap {
+                background-color: greenyellow;
+                padding: 15px;
+                margin: 15px 0;
+                border-radius: 10px;
+            }
+
+            input {
+                /* 너비 70% */
+                width: 70%;
+                /* 테두리 안쪽 여백 12px */
+                padding: 12px;
+                /* 테두리 없음 */
+                border: none;
+                /* 모서리 곡률 10px */
+                border-radius: 10px;
+                /* outline 없음 */
+                outline: none;
+                /* 폰트 크기 10px */
+                font-size: 16px;
+            }
+
+            button {
+                /* 테두리 안쪽 여백 상하 12px, 좌우 10px */
+                padding: 12px 10px;
+                /* 테두리 없음 */
+                border: none;
+                /* 모서리 곡률 10px */
+                border-radius: 10px;
+                /* 배경색 burlywood */
+                background-color: burlywood;
+                /* 텍스트 생삭 검정 */
+                color: black;
+                /* cursor 모양 pointer로 */
+                cursor: pointer;
+                /* 폰트 두껍게 */
+                font-weight: bold;
+            }
+
+            button:hover {
+                /* rgb(255, 214, 160) */
+                background-color: rgb(255, 214, 160);
+            }
+
+            ul {
+                /* 왼쪽 테두리의 안쪽 여백 20px */
+                padding-left: 20px;
+            }
+
+            li {
+                /* 테두리 바깥쪽 여백 상하 10px, 좌우 0 */
+                margin: 10px 0;
+                /* 테두리 안쪽 여백 10px */
+                padding: 10px;
+                /* 배경색 흰색, 불투명도는 0.1 */
+                background-color: rgba(255, 255, 255, 0.1);
+                /* 모서리 곡률 5px */
+                border-radius: 5px;
+            }
+
+            #room_cnt {
+                /* 폰트 크기 30px */
+                font-size: 30px;
+                /* 텍스트 색상 #ffe7c2 */
+                color: #ffe7c2;
+                font-weight: 700;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <!-- 0. 소개 -->
+            <h1>경소고 호텔 체크인 관리</h1>
+            <p>호텔의 체크인/체크아웃을 관리하는 앱 페이지입니다.</p>
+            <!-- 상대 경로
+             ./ -> 현재 파일이 있는 폴더
+            ../ -> 현재 파일이 있는 폴더의 상위 폴더의 절대 경로
+            / -> 현재 프로젝트 / 도메인의 최상위 폴더 -->
+            <img src="./hilton-social-img.jpg" />
+            <!-- 1. 이미 체크인된 사람 명단 -->
+            <div class="ckeckin_wrap">
+                <h2>체크인 목록</h2>
+                <ul id="checkin_list">
+                    <li>득범</li>
+                    <li>동우</li>
+                    <li>은혁</li>
+                </ul>
+            </div>
+            <!-- 2. 체크인 -->
+            <div class="checkin_wrap">
+                <h2>체크인</h2>
+                <input id="input_name" type="text" placeholder="손님 이름을 입력하세요." />
+                <button id="btn_checkin">체크인</button>
+            </div>
+            <!-- 3. 체크아웃 -->
+            <div class="checkin_wrap">
+                <h2>체크아웃</h2>
+                <input id="input_num" type="number" placeholder="손님 순번을 입력하세요." />
+                <button id="btn_checkout">체크아웃</button>
+            </div>
+            <!-- 4. 빈 방 개수 -->
+            <div class="room_wrap">
+                <h2>빈 방 개수</h2>
+                <p id="room_cnt">100개</p>
+            </div>
+        </div>
+    </body>
+    <script>
+        const checkinList = document.getElementById("checkin_list");
+        let customerCount = checkinList.children.length;
+        
+        function checkin(name) {
+            if (name.trim().length == 0) {
+                alert("이름을 입력하세요.")
+                return false;
+            }
+            customerCount++;
+            return true;
+        }
+
+        // 체크인
+        // customers 배열에 손님 추가
+        // ul 안에 li로 가공 후 추가
+        document.getElementById("btn_checkin").onclick = function () {
+            const name = document.getElementById("input_name").value;
+            if (checkin(name)) {
+                const li = document.createElement("li");
+                li.textContent = name;
+                checkinList.appendChild(li);
+            }
+        };
+
+        // 체크아웃
+        document.getElementById("btn_checkout").onclick = function () {
+            const num = document.getElementById("input_num").value;
+            // 입력받을 수 있는 수의 범위 최소 1 ~ customers.length
+            if (num <= customerCount && num >= 1) {
+                // customers 카운트 1 감소
+                // 화면에서 삭제
+                customerCount--;
+                checkinList.children[num - 1].remove();
+            } else {
+                alert(`1부터 ${customerCount} 사이의 값을 입력하세요.`);
+            }
+        };
+    </script>
+</html>
